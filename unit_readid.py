@@ -4,20 +4,20 @@ from bs4 import BeautifulSoup
 import tkinter
 
 
-def r_id(sf):
+def r_id():
     # url = "https://www.luogu.com.cn/problem/list"
     urls = []
-    for i in range(1):
+    for i in range(1,2):
         urls.append("https://www.luogu.com.cn/problem/list?difficulty=" + str(i) + "&page=1")
 
     header = {
         "user-agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.25 Safari/537.36 Core/1.70.3877.400 QQBrowser/10.8.4533.400"
     }
     dif = ["暂无评定", "入门", "普及-", "普及／提高-", "普及+／提高", "提高+／省选-", "省选／NOI-", "NOI／NOI+／CTSC"]
-    cnt = 0
+    cnt = 1
     for url in urls:
         print("正在爬取难度为{}的题单".format(dif[cnt]))
-        sf.text.see(tkinter.END)
+        # sf.text.see(tkinter.END)
         resp = requests.get(url, headers=header)
         # print(resp.text)
 

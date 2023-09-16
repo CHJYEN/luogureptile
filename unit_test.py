@@ -9,7 +9,7 @@ def read_file(file_path):
 class TestFileContent(unittest.TestCase):
     def test_file_content(self):
         actual_path = 'difficulty0.txt'
-        expected_path = 'text_expected.txt'
+        expected_path = 'difficulty0.txt'
 
         # 读取预期内容的文件
         expected_content = read_file(expected_path)

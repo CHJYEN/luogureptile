@@ -26,12 +26,12 @@ def t_get_captcha(captcha_entry, window, testinput):
     # 关闭窗口
     window.destroy()
 
-def main_solve(sf):
-    root = tkinter.Tk()
+def main_solve():
+    # root = tkinter.Tk()
 
     # 定义区
     browser = webdriver.Chrome()
-    browser.minimize_window()  # 最大化窗口
+    browser.maximize_window()  # 最大化窗口
     wait = WebDriverWait(browser, 10)  # 等待加载10s
 
     # from selenium.webdriver.support import expected_conditions as EC
@@ -56,9 +56,8 @@ def main_solve(sf):
                 x = f.readline()
 
     # login()
-    print("请输入验证码：\n")
-    t = ""
-    time.sleep(20)
+    tt = input("请输入验证码：\n")
+    time.sleep(1)
     userinput = safari.find_element(By.XPATH, '//*[@id="app"]/div[2]/main/div/div/div/div/div/div/div[1]/div/input')
     passinput = safari.find_element(By.XPATH, '//*[@id="app"]/div[2]/main/div/div/div/div/div/div/div[2]/div/input')
     testinput = safari.find_element(By.XPATH,
@@ -68,7 +67,7 @@ def main_solve(sf):
     userinput.send_keys("18650697758")
     passinput.click()
     passinput.send_keys("qj030504")
-
+    """
     # 获取验证码图片
     screenshot_filename = "screenshot.png"
     safari.save_screenshot(screenshot_filename)
@@ -98,8 +97,10 @@ def main_solve(sf):
     # 创建提交按钮
     submit_button = tkinter.Button(root, text="提交", command=lambda: t_get_captcha(captcha_entry, root, testinput))
     submit_button.pack()
-
-
+    """
+    testinput.click()
+    testinput.send_keys(str(tt))
+    testinput.send_keys(Keys.ENTER)
     WebDriverWait(safari, 5)
     time.sleep(5)
 
@@ -137,7 +138,12 @@ def main_solve(sf):
             except WebDriverException as e:
                 print("该题暂未有题解")
             finally:
-                sf.text.see(tkinter.END)
+                # sf.text.see(tkinter.END)
                 time.sleep(2.5)
         print("题目级别为：{}的题解爬取完毕".format(dif[i]))
     safari.quit()
+
+
+
+if __name__ == "__main__":
+    main_solve()

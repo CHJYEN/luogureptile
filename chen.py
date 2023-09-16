@@ -72,41 +72,6 @@ class RadioButtonDemo(ttk.LabelFrame):
         self.button = ttk.Button(self, text="给爷 爬!")
         self.button.grid(row=6, column=0, padx=5, pady=10, sticky="ew")
 
-        def on_button_click():
-
-            combo_list1 = ["难度选择", "暂未评定", "入门", "普及-", "普及/提高-", "普及+/提高", "提高+/省选-",
-                           "省选/NOI-",
-                           "NOI/NOI+/CTSC"]
-
-            print("稍等一下，正在努力爬！")
-            global list_need, title_need, solve_need, gjc, difficulty
-
-            list_need = var_1.get()
-            title_need = var_2.get()
-            solve_need = var_3.get()
-
-            # gjc = self.entry.get()
-            difficulty1 = self.combobox.get()
-            rg = 0
-            for ii in range(1, 10):
-                if difficulty1 == combo_list1[ii]:
-                    rg = ii
-                    break
-
-            # PanedDemo(self).grid(row=0, column=0, rowspan=2, padx=0, pady=(10, 0))
-            time.sleep(5)
-            # print("list_need: ", list_need)
-            # print("title_need: ", title_need)
-            # print("solve_need: ", solve_need)
-            # print(difficulty1)
-            if list_need:
-                r_id()
-            if title_need:
-                main_title(rg)
-            if solve_need:
-                main_solve()
-
-        self.button.config(command=on_button_click)
 
 
 class InputsAndButtonsDemo(ttk.Frame):
@@ -176,11 +141,11 @@ class InputsAndButtonsDemo(ttk.Frame):
             # print("solve_need: ", solve_need)
             # print(difficulty1)
             if list_need:
-                r_id(self)
+                r_id()
             if title_need:
-                main_title(rg, self)
+                main_title(rg)
             if solve_need:
-                main_solve(self)
+                main_solve()
 
         self.button.config(command=on_button_click)
 
